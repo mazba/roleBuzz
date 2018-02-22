@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Model\SysUserGroup;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class UserGroupController extends Controller
+class UserGroupsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,6 +16,7 @@ class UserGroupController extends Controller
     public function index()
     {
         //
+
     }
 
     /**
@@ -24,7 +26,7 @@ class UserGroupController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.UserGroups.create');
     }
 
     /**
@@ -35,7 +37,15 @@ class UserGroupController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $user_group = new SysUserGroup();
+        $validatedData = $this->validate($request,[
+            'name' => 'required|unique:sys_user_groups|max:255'
+        ]);
+        $user_group->name = $request->name;
+        //       $user_group->created_by ='';//TODO:: have to add auth
+        $user_group->save();
+        $request->session()->flash('status', __('saved successfully'));
+//        redirect('index');
     }
 
     /**

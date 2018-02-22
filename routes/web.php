@@ -11,7 +11,7 @@
 |
 */
 Route::prefix('admin')->group(function () {
-    Route::resource('usr-groups', 'UserGroupController');
+    Route::resource('usr-groups', 'UserGroupsController');
     Route::resource('chart-of-accounts', 'ChartOfAccountsController');
     Route::get('/', 'DashboardController@index')->name('admin_dashboard');
 });
