@@ -22,7 +22,7 @@ The framework source code can be found here: [RoleBuzz](https://github.com/mazba
 
 ## Configuration
 
-Read and edit `config/app.php` and setup the 'Datasources' and any other
+Read and edit `config` and setup the 'Datasources' and any other
 configuration relevant for your application.
 
 
