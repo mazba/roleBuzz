@@ -15,10 +15,10 @@ class CreateUserGroups extends Migration
     {
         Schema::create('sys_user_groups', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('parent_id');
+            $table->integer('parent_id')->nullable();
             $table->string('name');
             $table->integer('created_by')->nullable();
-            $table->integer('modified_by')->nullable();
+            $table->integer('updated_by')->nullable();
             $table->timestamps();
         });
     }
