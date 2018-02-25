@@ -14,7 +14,7 @@
     <div class="panel panel-default">
       <div class="panel-heading">
         <h3 class="panel-title">{{__('Permission Management')}}
-          <a href="{{route('permissions.create')}}" title="New Permission Group" class="panel-title-btn btn btn-icon waves-effect waves-light btn-success m-b-5 pull-right"> <i class="ion-plus-circled"></i> </a>
+          <a href="{{route('create_group')}}" title="New Permission Group" class="panel-title-btn btn btn-icon waves-effect waves-light btn-success m-b-5 pull-right"> <i class="ion-plus-circled"></i> </a>
         </h3>
       </div>
       <div class="panel-body row">
@@ -36,8 +36,8 @@
                 <td>{{$user['created_at']}}</td>
                 <td>{{$user['updated_at']}}</td>
                 <td>
-                  <a href="{{ route('permissions.index') }}" class="btn btn-icon waves-effect waves-light btn-default m-b-5"> <i class="fa fa-wrench"></i> </a>
-                  <a href="{{ route('permissions.index') }}" class="btn btn-icon waves-effect waves-light btn-default m-b-5"> <i class="ion-information-circled"></i> </a>
+                  <a href="{{ route('build_permission',$user['id']) }}" class="btn btn-icon waves-effect waves-light btn-default m-b-5"> <i class="fa fa-wrench"></i> </a>
+                  <a href="{{ route('permissions') }}" class="btn btn-icon waves-effect waves-light btn-default m-b-5"> <i class="ion-information-circled"></i> </a>
                   {{--<div class="btn-group">
                     <button type="button" class="btn btn-info dropdown-toggle waves-effect waves-light" data-toggle="dropdown" aria-expanded="false"> set <span class="caret"></span> </button>
                     <ul class="dropdown-menu">

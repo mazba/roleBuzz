@@ -15,16 +15,6 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        $routes = \Route::getRoutes();
-        $d = [];
-        foreach($routes as $key=>$route){
-            $all_routes[]=[
-                'uri'=>$route->uri,
-                'methods'=>$route->methods,
-                'action'=>$route->action,
-            ];
-        }
-        echo '<pre>';print_r($all_routes);die;
         return view('admin.Dashboard.index');
     }
 }

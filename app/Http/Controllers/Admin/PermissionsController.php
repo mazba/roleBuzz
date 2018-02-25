@@ -44,7 +44,7 @@ class PermissionsController extends Controller
         //       $user_group->created_by ='';//TODO:: have to add auth
         $user_group->save();
         $request->session()->flash('status', __('saved successfully'));
-        return redirect()->route('permissions.index');
+        return redirect()->route('permissions');
     }
 
     /**
@@ -64,31 +64,18 @@ class PermissionsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function buildPermission($id)
     {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+        $routes = \Route::getRoutes();
+        $group = SysUserGroup::findOrFail($id);
+        foreach($routes as $key=>$route){
+            $all_routes[]=[
+                'uri'=>$route->uri,
+                'methods'=>$route->methods,
+                'action'=>$route->action,
+            ];
+        }
+//        dd($all_routes);
+        return view('admin.Permissions.build_permission',compact('routes','group'));
     }
 }

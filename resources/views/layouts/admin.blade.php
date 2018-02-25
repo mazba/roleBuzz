@@ -32,6 +32,7 @@
         <!-- Custom Files -->
         <link href="{{ asset('template/css/helper.css') }}" rel="stylesheet" type="text/css" />
         <link href="{{ asset('template/css/style.css') }}" rel="stylesheet" type="text/css" />
+        <link href="{{ asset('template/assets/datatables/jquery.dataTables.min.css') }}" rel="stylesheet" type="text/css" />
         {{--notification--}}
         <link href="{{asset('template/assets/notifications/notification.css')}}" rel="stylesheet" />
         {{--custom--}}
@@ -203,8 +204,11 @@
         <script src="{{ asset('template/assets/notifications/notify.min.js')}}"></script>
         <script src="{{ asset('template/assets/notifications/notify-metro.js')}}"></script>
         <script src="{{ asset('template/assets/notifications/notifications.js')}}"></script>
+        <script src="{{ asset('template/assets/notifications/notifications.js')}}"></script>
         <!-- CUSTOM JS -->
         <script src="{{ asset('template/js/jquery.app.js') }}"></script>
+        <script src="{{ asset('template/assets/datatables/jquery.dataTables.min.js') }}"></script>
+        <script src="{{ asset('template/assets/datatables/dataTables.bootstrap.js') }}"></script>
         <script src="{{ asset('js/sys.js') }}"></script>
         @yield('scripts')
         <script type="text/javascript">
