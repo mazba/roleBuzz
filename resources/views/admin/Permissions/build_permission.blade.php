@@ -44,17 +44,29 @@
                                 </thead>
                                 <tbody>
                                     @foreach($routes as $k=>$route)
+                                        <?php
+//                                        if(isset($route->action['as']))
+//                                            $path = $route->action['as'];
+//                                        elseif(isset($route->methods))
+//                                            $path = $route->uri.'/'.implode(',',$route->methods);
+                                        ?>
                                         <tr>
                                             <td>
                                                 <div class="checkbox checkbox-circle">
-                                                    <input id="{{$k}}" type="checkbox">
+                                                    <input class="route" id="{{$k}}" type="checkbox" name="routes[{{$k}}][as]" value="{{isset($route->action['as'])?$route->action['as']:''}}">
                                                     <label for="{{$k}}"></label>
                                                 </div>
+                                                <input type="hidden" name="routes[{{$k}}][uri]" value="{{$route->uri}}"/>
+                                                <input type="hidden" name="routes[{{$k}}][http_verbs]" value="{{implode(',',$route->methods)}}"/>
                                             </td>
                                             <td class="text-center"><?= isset($route->action['as'])?$route->action['as']:'<i class="fa fa-close"></i>'?></td>
                                             <td>{{$route->uri}}</td>
                                             <td>{{isset($route->methods)?implode(',',$route->methods):''}}</td>
-                                            <td>{{isset($route->action['middleware'])?$route->action['middleware']:''}}</td>
+                                            <td>
+                                                @if(isset($route->action['middleware']))
+                                                    {{is_array($route->action['middleware'])?implode(',',$route->action['middleware']):$route->action['middleware']}}
+                                                @endif
+                                            </td>
                                         </tr>
                                     @endforeach
                                 </tbody>
@@ -82,12 +94,19 @@
             $('#datatable').dataTable({
                 paging:false,
                 "order": [],
-                "columnDefs": [ {
+                "columnDefs": [{
                     "targets"  : 'no-sort',
-                    "orderable": false,
+                    "orderable": false
                 }]
             });
-        } );
+            $('#check-all').click(function(){
+                if($('.route').is(':checked'))
+                    $('.route').prop('checked',false);
+                else
+                    $('.route').prop('checked',true);
+
+            });
+        });
     </script>
     <style>
         .permission-builder .panel-body h2{
