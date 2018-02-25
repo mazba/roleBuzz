@@ -15,8 +15,7 @@ class UserGroupsController extends Controller
      */
     public function index()
     {
-        //
-
+        return view('admin.UserGroups.index',['users'=>SysUserGroup::all()]);
     }
 
     /**
@@ -26,7 +25,7 @@ class UserGroupsController extends Controller
      */
     public function create()
     {
-        return view('admin.UserGroups.create');
+        return view('admin.UserGroups.create',['users'=>SysUserGroup::pluck('name','id')]);
     }
 
     /**
@@ -45,7 +44,7 @@ class UserGroupsController extends Controller
         //       $user_group->created_by ='';//TODO:: have to add auth
         $user_group->save();
         $request->session()->flash('status', __('saved successfully'));
-//        redirect('index');
+        return redirect()->route('usr-groups.index');
     }
 
     /**

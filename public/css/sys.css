@@ -1,0 +1,13 @@
+/**
+ * Created by m@zba on 2/25/18.
+ */
+.panel-title-btn {
+    padding: 1px 11px;
+}
+.panel-title-btn span{a
+    display: none;
+}
+.panel-title-btn i {
+    font-size: 18px;
+    text-align: center;
+}

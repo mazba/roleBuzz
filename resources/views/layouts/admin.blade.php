@@ -34,6 +34,8 @@
         <link href="{{ asset('template/css/style.css') }}" rel="stylesheet" type="text/css" />
         {{--notification--}}
         <link href="{{asset('template/assets/notifications/notification.css')}}" rel="stylesheet" />
+        {{--custom--}}
+        <link href="{{ asset('css/sys.css') }}" rel="stylesheet" />
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
         <!--[if lt IE 9]>
@@ -203,6 +205,7 @@
         <script src="{{ asset('template/assets/notifications/notifications.js')}}"></script>
         <!-- CUSTOM JS -->
         <script src="{{ asset('template/js/jquery.app.js') }}"></script>
+        <script src="{{ asset('js/sys.js') }}"></script>
         @yield('scripts')
         <script type="text/javascript">
             jQuery(document).ready(function($) {

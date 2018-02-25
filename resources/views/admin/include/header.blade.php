@@ -9,7 +9,7 @@
     <!-- LOGO -->
     <div class="topbar-left">
         <div class="text-center">
-            <a href="{{ route('admin_dashboard') }}" class="logo"><i class="md md-attach-money"></i> <span>MY PAY </span></a>
+            <a href="{{ route('admin_dashboard') }}" class="logo"><i class="md md-attach-money"></i> <span>Role Buzz</span></a>
         </div>
     </div>
     <!-- Button mobile view to collapse sidebar menu -->

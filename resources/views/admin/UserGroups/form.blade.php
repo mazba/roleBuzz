@@ -1,6 +1,6 @@
 <div class="form-group col-md-4">
     {{ Form::label('parent_id', __('Parent')) }}
-    {{ Form::select('parent_id', [],null,['class'=>'form-control']) }}
+    {{ Form::select('parent_id', $users,null,['placeholder'=>__('None'),'class'=>'form-control']) }}
 </div>
 <div class="form-group col-md-8">
     {{ Form::label('name', __('Group Name')) }}
