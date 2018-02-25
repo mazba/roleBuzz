@@ -6,7 +6,7 @@ use App\Model\SysUserGroup;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class UserGroupsController extends Controller
+class PermissionsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +15,7 @@ class UserGroupsController extends Controller
      */
     public function index()
     {
-        return view('admin.UserGroups.index',['users'=>SysUserGroup::all()]);
+        return view('admin.Permissions.index',['users'=>SysUserGroup::all()]);
     }
 
     /**
@@ -25,7 +25,7 @@ class UserGroupsController extends Controller
      */
     public function create()
     {
-        return view('admin.UserGroups.create',['users'=>SysUserGroup::pluck('name','id')]);
+        return view('admin.Permissions.create',['users'=>SysUserGroup::pluck('name','id')]);
     }
 
     /**
@@ -44,7 +44,7 @@ class UserGroupsController extends Controller
         //       $user_group->created_by ='';//TODO:: have to add auth
         $user_group->save();
         $request->session()->flash('status', __('saved successfully'));
-        return redirect()->route('usr-groups.index');
+        return redirect()->route('permissions.index');
     }
 
     /**
