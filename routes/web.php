@@ -15,6 +15,7 @@ Route::prefix('admin')->group(function () {
     Route::get('permissions/create-group', 'PermissionsController@create')->name('create_group');
     Route::post('permissions/store', 'PermissionsController@store');
     Route::get('permissions/build/{id}', 'PermissionsController@buildPermission')->name('build_permission');
+    Route::post('permissions/set/{id}', 'PermissionsController@setPermission');
 //    Route::resource('permissions', 'PermissionsController');
     Route::resource('chart-of-accounts', 'ChartOfAccountsController');
     Route::get('/', 'DashboardController@index')->name('admin_dashboard');

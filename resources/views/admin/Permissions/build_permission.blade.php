@@ -26,6 +26,10 @@
                 <div class="panel-body">
                     <h2 class="text-center">{{$group['name']}}</h2>
                     <div class="row">
+                        {!! Form::open(['action' => ['PermissionsController@setPermission',$id]]) !!}
+                        <div class="col-md-12">
+                            {{ Form::button(__('Set Role'),['type'=>'submit','class'=>'btn btn-block btn-success waves-effect waves-light'])}}
+                        </div>
                         <div class="col-md-12">
                             <table id="datatable" class="table table-striped table-bordered">
                                 <thead>
@@ -45,17 +49,19 @@
                                 <tbody>
                                     @foreach($routes as $k=>$route)
                                         <?php
-//                                        if(isset($route->action['as']))
-//                                            $path = $route->action['as'];
-//                                        elseif(isset($route->methods))
-//                                            $path = $route->uri.'/'.implode(',',$route->methods);
+                                        $c = collect($user_group_permissions);
+                                        $checked = $c->search(function ($item,$key) use($route){
+                                            return (isset($route->action['as'])&&$route->action['as']==$item['as'])||
+                                            ($route->uri==$item['uri']&&implode(',',$route->methods)==$item['http_verbs']);
+                                        });
                                         ?>
                                         <tr>
                                             <td>
                                                 <div class="checkbox checkbox-circle">
-                                                    <input class="route" id="{{$k}}" type="checkbox" name="routes[{{$k}}][as]" value="{{isset($route->action['as'])?$route->action['as']:''}}">
+                                                    <input {{$checked!==false?'checked':''}} class="route" id="{{$k}}" type="checkbox" name="routes[{{$k}}][checked]" value="1">
                                                     <label for="{{$k}}"></label>
                                                 </div>
+                                                <input type="hidden" name="routes[{{$k}}][as]" value="{{isset($route->action['as'])?$route->action['as']:''}}"/>
                                                 <input type="hidden" name="routes[{{$k}}][uri]" value="{{$route->uri}}"/>
                                                 <input type="hidden" name="routes[{{$k}}][http_verbs]" value="{{implode(',',$route->methods)}}"/>
                                             </td>
@@ -72,6 +78,7 @@
                                 </tbody>
                             </table>
                         </div>
+                        {{ Form::close() }}
                         {{--<ul class="list-group no-margn nicescroll todo-list" >
                             @foreach($routes as $k=>$route)
                                 <li class="list-group-item">

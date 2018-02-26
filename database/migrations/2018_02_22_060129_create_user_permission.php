@@ -15,12 +15,10 @@ class CreateUserPermission extends Migration
     {
         Schema::create('sys_group_permissions', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('sys_group_id');
             $table->string('uri');
-            $table->string('methods');
-            $table->string('namespace');
-            $table->string('controller');
-            $table->string('action');
-            $table->string('prefix');
+            $table->string('http_verbs');
+            $table->string('as')->nullable();
             $table->integer('created_by')->nullable();
             $table->timestamps();
         });

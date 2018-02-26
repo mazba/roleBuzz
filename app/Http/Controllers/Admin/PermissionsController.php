@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Model\SysGroupPermissions;
 use App\Model\SysUserGroup;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -59,7 +60,7 @@ class PermissionsController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Show the form for permission the specified resource.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
@@ -75,7 +76,35 @@ class PermissionsController extends Controller
                 'action'=>$route->action,
             ];
         }
-//        dd($all_routes);
-        return view('admin.Permissions.build_permission',compact('routes','group'));
+        $user_group_permissions = new SysGroupPermissions();
+        $user_group_permissions=$user_group_permissions->where(['sys_group_id'=>$id])->get()->toArray();
+        return view('admin.Permissions.build_permission',compact('user_group_permissions','id','routes','group'));
+    }
+    /**
+     * Set the form for permission the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function setPermission(Request $request,$id)
+    {
+        $user_group_permissions = new SysGroupPermissions();
+        $user_group_permissions->where(['sys_group_id'=>$id])->delete();
+        $validatedData = $this->validate($request,[
+            'routes.*.uri' => 'required',
+            'routes.*.http_verbs' => 'required'
+        ]);
+        $inputs = $request->routes;
+        foreach ($inputs as $key=>&$input){
+            if(!isset($input['checked']))
+                unset($inputs[$key]);
+            else{
+                unset($input['checked']);
+                $input['sys_group_id'] = $id;
+            }
+        }
+        SysGroupPermissions::insert($inputs);
+        $request->session()->flash('status', __('Permission has been saved Successfully'));
+        return redirect()->route('permissions');
     }
 }
