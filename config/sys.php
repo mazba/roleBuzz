@@ -7,4 +7,5 @@
  */
 return [
     'admin_prefix'=>'admin',// this prefix will be used in permission management
+    'role_cache'=>'prole'
 ];

@@ -6,6 +6,7 @@ use App\Model\SysGroupPermissions;
 use App\Model\SysUserGroup;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Cache;
 
 class PermissionsController extends Controller
 {
@@ -104,6 +105,7 @@ class PermissionsController extends Controller
             }
         }
         SysGroupPermissions::insert($inputs);
+        Cache::forget(config('sys.role_cache'));
         $request->session()->flash('status', __('Permission has been saved Successfully'));
         return redirect()->route('permissions');
     }
