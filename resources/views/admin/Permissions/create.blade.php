@@ -10,7 +10,7 @@
                 </h3>
             </div>
             <div class="panel-body row">
-                {!! Form::open(['action' => 'PermissionsController@store']) !!}
+                {!! Form::open(['action' => 'Admin\PermissionsController@store']) !!}
                 @include('admin.Permissions.form',['submit'=>__('Save')])
                 {{ Form::close() }}
             </div><!-- panel-body -->

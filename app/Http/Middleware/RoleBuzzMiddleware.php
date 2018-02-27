@@ -5,6 +5,7 @@ namespace App\Http\Middleware;
 use App\Model\SysGroupPermissions;
 use Closure;
 use function foo\func;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cache;
 
 class RoleBuzzMiddleware
@@ -28,9 +29,9 @@ class RoleBuzzMiddleware
         $roles=collect($roles);
         $route = $request->route();
         $hasRole=$roles->search(function($item,$key) use($route){
-            return (isset($route->action['as'])&&$route->action['as']==$item['as']) ||
-                ($route->uri == $item['uri']&&implode(',',$route->methods)==$item['http_verbs']);
+            return (isset($route->action['as'])&&$route->action['as']==$item['as']&&Auth::user()->sys_group_id==$item['sys_group_id']) ||
+                ($route->uri == $item['uri']&&implode(',',$route->methods)==$item['http_verbs']&&Auth::user()->sys_group_id==$item['sys_group_id']);
         });
-        return $next($request);
+        return $hasRole ?$next($request):response('Unauthorized','401');
     }
 }
