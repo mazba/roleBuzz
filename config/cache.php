@@ -39,6 +39,8 @@ return [
         ],
 
         'database' => [
+
+            
             'driver' => 'database',
             'table' => 'cache',
             'connection' => null,
