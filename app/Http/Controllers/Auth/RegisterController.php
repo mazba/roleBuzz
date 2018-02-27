@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Model\SysUserGroup;
 use App\Model\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -56,7 +57,8 @@ class RegisterController extends Controller
 
     protected function register()
     {
-        return view('auth.register');
+
+        return view('auth.register',['groups'=>SysUserGroup::pluck('name','id')]);
     }
     /**
      * Create a new user instance after a valid registration.
@@ -69,9 +71,11 @@ class RegisterController extends Controller
         $validatedData = $this->validate($request,[
             'username' => 'required|string|max:255|unique:users',
             'password' => 'required|string|min:6',
+            'sys_group_id' => 'required',
         ]);
         User::create([
             'username' => $request->username,
+            'sys_group_id' => $request->sys_group_id,
             'password' => bcrypt($request->password),
         ]);
         return redirect()->route('admin_dashboard');

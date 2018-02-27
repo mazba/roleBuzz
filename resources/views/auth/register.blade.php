@@ -7,8 +7,15 @@
         </div>
         <div class="col-md-6 col-md-offset-3">
             <div class="panel panel-default">
-                <div class="panel-body row">
+                <div class="panel-body">
                     {!! Form::open(['action' => 'Auth\RegisterController@create']) !!}
+                    <div class="form-group">
+                        {{ Form::label('sys_group_id', __('Group')) }}
+                        {{ Form::select('sys_group_id', $groups,null,['placeholder'=>__('Select'),'class'=>'form-control']) }}
+                        @if($errors->has('sys_group_id'))
+                            <label id="name-error" class="error" for="name">{{ $errors->first('sys_group_id') }}</label>
+                        @endif
+                    </div>
                     <div class="form-group">
                         {{ Form::label('username', __('Username')) }}
                         {{ Form::text('username',null,['class'=>'form-control']) }}

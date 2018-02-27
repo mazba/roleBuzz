@@ -54,4 +54,8 @@ class LoginController extends Controller
         // if unsuccessful, then redirect back to the login with the form data
         return redirect()->back()->withInput($request->only('mobile', 'remember'))->with('message',__('Username Password is not valid'));
     }
+    public function logout(){
+        Auth::logout();
+        return redirect()->route('login');
+    }
 }

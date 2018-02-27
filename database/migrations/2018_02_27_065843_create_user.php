@@ -17,6 +17,7 @@ class CreateUser extends Migration
             $table->increments('id');
             $table->string('username');
             $table->string('password');
+            $table->string('sys_group_id');
             $table->timestamps();
         });
     }

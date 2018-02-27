@@ -28,8 +28,8 @@ Route::prefix('admin')->middleware(['RoleBuzz','auth'])->group(function () {
     Route::get('/', 'Admin\DashboardController@index')->name('admin_dashboard');
 });
 
-Route::get('/', 'Auth\LoginController@showLoginForm');
-Route::get('register', 'Auth\RegisterController@register');
+Route::get('/', 'Auth\LoginController@showLoginForm')->name('login');
+Route::get('register', 'Auth\RegisterController@register')->name('register');
 Route::post('register', 'Auth\RegisterController@create');
-Route::post('login', 'Auth\LoginController@login')->name('login');
-Route::post('logout', 'Auth\LoginController@logout');
+Route::post('login', 'Auth\LoginController@login');
+Route::get('logout', 'Auth\LoginController@logout')->name('logout');

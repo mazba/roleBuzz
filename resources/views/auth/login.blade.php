@@ -42,7 +42,7 @@
                             <a href=""><i class="fa fa-lock m-r-5"></i> Forgot your password?</a>
                         </div>
                         <div class="col-sm-5 text-right">
-                            <a href="">Create an account</a>
+                            <a href="{{route('register')}}">Create an account</a>
                         </div>
                     </div>
                 {{ Form::close() }}
