@@ -10,7 +10,7 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::prefix('admin')->middleware(['RoleBuzz'])->group(function () {
+Route::prefix('admin')->middleware(['RoleBuzz','auth'])->group(function () {
     Route::get('permissions', 'Admin\PermissionsController@index')->name('permissions');
     Route::get('permissions/create-group', 'Admin\PermissionsController@create')->name('create_group');
     Route::post('permissions/store', 'Admin\PermissionsController@store');
@@ -28,6 +28,8 @@ Route::prefix('admin')->middleware(['RoleBuzz'])->group(function () {
     Route::get('/', 'Admin\DashboardController@index')->name('admin_dashboard');
 });
 
-Route::get('login', 'Auth\LoginController@showLoginForm');
+Route::get('/', 'Auth\LoginController@showLoginForm');
+Route::get('register', 'Auth\RegisterController@register');
+Route::post('register', 'Auth\RegisterController@create');
 Route::post('login', 'Auth\LoginController@login')->name('login');
 Route::post('logout', 'Auth\LoginController@logout');

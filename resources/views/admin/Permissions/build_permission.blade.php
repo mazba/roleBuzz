@@ -26,7 +26,7 @@
                 <div class="panel-body">
                     <h2 class="text-center">{{$group['name']}}</h2>
                     <div class="row">
-                        {!! Form::open(['action' => ['PermissionsController@setPermission',$id]]) !!}
+                        {!! Form::open(['action' => ['Admin\PermissionsController@setPermission',$id]]) !!}
                         <div class="col-md-12">
                             {{ Form::button(__('Set Role'),['type'=>'submit','class'=>'btn btn-block btn-success waves-effect waves-light'])}}
                         </div>
