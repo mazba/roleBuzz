@@ -11,21 +11,14 @@
 |
 */
 Route::prefix('admin')->middleware(['RoleBuzz','auth'])->group(function () {
-    Route::get('permissions', 'Admin\PermissionsController@index')->name('permissions');
-    Route::get('permissions/create-group', 'Admin\PermissionsController@create')->name('create_group');
-    Route::post('permissions/store', 'Admin\PermissionsController@store');
-    Route::get('permissions/build/{id}', 'Admin\PermissionsController@buildPermission')->name('build_permission');
-    Route::post('permissions/set/{id}', 'Admin\PermissionsController@setPermission');
-//    Route::resource('permissions', 'PermissionsController');
-    Route::resource('chart-of-accounts', 'Admin\ChartOfAccountsController');
-    Route::get('/', 'Admin\DashboardController@index')->name('admin_dashboard');
-    Route::get('custom', function (){
-        return 'custom';
-    });
-    Route::match(['get', 'post'], 'custom2', function () {
-        return 'custom2';
-    });
-    Route::get('/', 'Admin\DashboardController@index')->name('admin_dashboard');
+    Route::get('permissions', 'Admin\Role\PermissionsController@index')->name('permissions');
+    Route::get('permissions/create-group', 'Admin\Role\PermissionsController@create')->name('create_group');
+    Route::post('permissions/store', 'Admin\Role\PermissionsController@store');
+    Route::get('permissions/build/{id}', 'Admin\Role\PermissionsController@buildPermission')->name('build_permission');
+    Route::post('permissions/set/{id}', 'Admin\Role\PermissionsController@setPermission');
+    Route::get('permissions/menu', 'Admin\Role\PermissionsController@menuIndex');
+    Route::get('/', 'Admin\Role\DashboardController@index')->name('admin_dashboard');
+    Route::get('/', 'Admin\Role\DashboardController@index')->name('admin_dashboard');
 });
 
 Route::get('/', 'Auth\LoginController@showLoginForm')->name('login');
