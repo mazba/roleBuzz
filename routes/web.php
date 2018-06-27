@@ -16,9 +16,9 @@ Route::prefix('admin')->middleware(['RoleBuzz','auth'])->group(function () {
     Route::post('permissions/store', 'Admin\Role\PermissionsController@store');
     Route::get('permissions/build/{id}', 'Admin\Role\PermissionsController@buildPermission')->name('build_permission');
     Route::post('permissions/set/{id}', 'Admin\Role\PermissionsController@setPermission');
-    Route::get('permissions/menu', 'Admin\Role\PermissionsController@menuIndex');
-    Route::get('/', 'Admin\Role\DashboardController@index')->name('admin_dashboard');
-    Route::get('/', 'Admin\Role\DashboardController@index')->name('admin_dashboard');
+    Route::resource('permissions/menu', 'Admin\Role\MenuController');
+    Route::get('/', 'Admin\DashboardController@index')->name('admin_dashboard');
+    Route::get('/', 'Admin\DashboardController@index')->name('admin_dashboard');
 });
 
 Route::get('/', 'Auth\LoginController@showLoginForm')->name('login');

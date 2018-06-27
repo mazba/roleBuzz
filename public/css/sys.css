@@ -11,3 +11,9 @@
     font-size: 18px;
     text-align: center;
 }
+.hidden-more-text{
+    cursor: pointer;
+}
+.hidden-more-text span{
+    display: none;
+}

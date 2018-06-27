@@ -15,3 +15,9 @@ $(function () {
         }
     });
 });
+/*
+* Read More for long text
+* */
+function showText(e){
+    $(e).html($(e).find('span').html());
+}

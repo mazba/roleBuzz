@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\Admin\Role;
 
-use App\Model\SysGroupPermissions;
-use App\Model\SysUserGroup;
+use App\Model\Role\SysGroupPermissions;
+use App\Model\Role\SysUserGroup;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Cache;
