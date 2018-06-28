@@ -35,6 +35,7 @@
         <link href="{{ asset('template/assets/datatables/jquery.dataTables.min.css') }}" rel="stylesheet" type="text/css" />
         {{--notification--}}
         <link href="{{asset('template/assets/notifications/notification.css')}}" rel="stylesheet" />
+        <link href="{{asset('template/assets/select2/select2.css')}}" rel="stylesheet" />
         {{--custom--}}
         <link href="{{ asset('css/sys.css') }}" rel="stylesheet" />
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -209,6 +210,12 @@
         <script src="{{ asset('template/js/jquery.app.js') }}"></script>
         <script src="{{ asset('template/assets/datatables/jquery.dataTables.min.js') }}"></script>
         <script src="{{ asset('template/assets/datatables/dataTables.bootstrap.js') }}"></script>
+        <script src="{{ asset('template/assets/select2/select2.min.js') }}" type="text/javascript"></script>
+        <!-- Modal-Effect -->
+        <script src="{{ asset('template/assets/modal-effect/js/classie.js') }}"></script>
+        <script src="{{ asset('template/assets/modal-effect/js/modalEffects.js') }}"></script>
+        <link href="{{ asset('template/assets/modal-effect/css/component.css') }}" rel="stylesheet">
+
         <script src="{{ asset('js/sys.js') }}"></script>
         @yield('scripts')
         <script type="text/javascript">

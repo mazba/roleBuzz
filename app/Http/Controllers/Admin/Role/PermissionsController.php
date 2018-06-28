@@ -48,18 +48,6 @@ class PermissionsController extends Controller
         $request->session()->flash('status', __('saved successfully'));
         return redirect()->route('permissions');
     }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
     /**
      * Show the form for permission the specified resource.
      *

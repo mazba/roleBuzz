@@ -16,10 +16,11 @@
               <th>{{__('Parent')}}</th>
               <th>{{__('Title')}}</th>
               <th>{{__('Alternative Title')}}</th>
+              <th>{{__('Url')}}</th>
               <th>{{__('Icon')}}</th>
               <th>{{__('Description')}}</th>
               <th>{{__('Status')}}</th>
-              <th>{{__('Action')}}</th>
+              <th class="text-right">{{__('Action')}}</th>
             </tr>
           </thead>
           <tbody>
@@ -32,15 +33,20 @@
                 <td>{{$item['parent']['title']}}</td>
                 <td>{{$item['title']}}</td>
                 <td>{{$item['alt_title']}}</td>
+                <td>{{$item['url']}}</td>
                 <td><i class="{{$item['icon']}}"></i></td>
                 <td>{!! readMoreString($item['description']) !!}</td>
                 <td>{{$item['status']==1?'Active':'In-Active'}}</td>
-                <td></td>
+                <td>
+                  <a href="{{route('menu.edit',$item['id'])}}" title="Edit" class="btn btn-icon waves-effect waves-light btn-info m-b-5 pull-right"><i class="md md-edit"></i></a>
+                </td>
               </tr>
             @endforeach
           </tbody>
         </table>
-        {{ $menu->appends(request()->except('page'))->links() }}
+        <div class="text-center">
+          {{ $menu->appends(request()->except('page'))->links() }}
+        </div>
       </div><!-- panel-body -->
     </div> <!-- panel -->
   </div> <!-- col-->

@@ -2,7 +2,7 @@
 
 namespace App\Http\Middleware;
 
-use App\Model\SysGroupPermissions;
+use App\Model\Role\SysGroupPermissions;
 use Closure;
 use function foo\func;
 use Illuminate\Support\Facades\Auth;

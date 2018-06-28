@@ -27,8 +27,17 @@ class MenuController extends Controller
      */
     public function create()
     {
-        $menu = [];
-        return view('admin.role.menu.create',compact('menu'));
+        $menus = SysMenu::get()->pluck('title','id');
+        $routes = \Route::getRoutes();
+        $all_routes = [];
+        foreach($routes as $key=>$route){
+            if(in_array('GET',$route->methods)&&
+                ((is_array($route->action['middleware'])&&in_array('RoleBuzz',$route->action['middleware']))||
+                (!is_array($route->action['middleware'])&&$route->action['middleware']=='RoleBuzz'))
+            )
+            $all_routes[$route->uri]=$route->uri;
+        }
+        return view('admin.role.menu.create',compact('menus','all_routes'));
     }
 
     /**
@@ -52,16 +61,6 @@ class MenuController extends Controller
         return redirect(route('menu.index'));
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
 
     /**
      * Show the form for editing the specified resource.
@@ -71,7 +70,18 @@ class MenuController extends Controller
      */
     public function edit($id)
     {
-        //
+        $menu = SysMenu::findOrFail($id);
+        $menus = SysMenu::get()->pluck('title','id');
+        $routes = \Route::getRoutes();
+        $all_routes = [];
+        foreach($routes as $key=>$route){
+            if(in_array('GET',$route->methods)&&
+                ((is_array($route->action['middleware'])&&in_array('RoleBuzz',$route->action['middleware']))||
+                    (!is_array($route->action['middleware'])&&$route->action['middleware']=='RoleBuzz'))
+            )
+                $all_routes[$route->uri]=$route->uri;
+        }
+        return view('admin.role.menu.edit',compact('menu','menus','all_routes'));
     }
 
     /**
@@ -83,17 +93,18 @@ class MenuController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request,[
+            'parent_id'=>'integer|nullable',
+            'title'=>'required',
+            'icon'=>'max:100',
+            'status'=>'integer',
+        ]);
+        $inputs = $request->all();
+        $inputs['status'] = isset($inputs['status'])?1:0;
+        unset($inputs['_token']);
+        SysMenu::findOrFail($id)->update($inputs);
+        $request->session()->flash('status', __('Menu Updated Successfully'));
+        return redirect(route('menu.index'));
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
 }

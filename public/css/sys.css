@@ -17,3 +17,13 @@
 .hidden-more-text span{
     display: none;
 }
+.panel-body .table .btn{
+    padding: 1px 4px;
+}
+.panel-body table td,th{
+    text-align: center;
+}
+.required label:after {
+    content: ' *';
+    color: red;
+}
