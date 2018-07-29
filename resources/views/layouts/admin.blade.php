@@ -197,7 +197,7 @@
 
         <!-- sweet alerts -->
         <script src="{{ asset('template/assets/sweet-alert/sweet-alert.min.js') }}"></script>
-        <script src="{{ asset('template/assets/sweet-alert/sweet-alert.init.js') }}"></script>{{ asset('template/') }}
+        <script src="{{ asset('template/assets/sweet-alert/sweet-alert.init.js') }}"></script>
         <!-- Counter-up -->
         <script src="{{ asset('template/assets/counterup/waypoints.min.js') }}" type="text/javascript"></script>
         <script src="{{ asset('template/assets/counterup/jquery.counterup.min.js') }}" type="text/javascript"></script>
@@ -227,7 +227,17 @@
                 @if(!empty($errors->all()))
                     $.Notification.notify('error','right',"{{__('Error')}}","{{ implode(' | ',$errors->all()) }}")
                 @endif
+                var activeChild = $('#sidebar-menu').find('li.active').parentsUntil('#sidebar-menu');
+                $.each(activeChild,function(item,index){
+                    if($(index).is('li')){
+                        $(index).children().addClass('active')
+                        $(index).addClass('active');
+                    }
+                    if($(index).is('ul'))
+                        $(index).css({display:'block'})
+                });
             });
         </script>
+
     </body>
 </html>

@@ -28,9 +28,7 @@
         <!--- Divider -->
         <div id="sidebar-menu">
             <ul>
-                <li>
-                    <a href="{{ route('admin_dashboard') }}" class="waves-effect active"><i class="md md-home"></i><span> Dashboard </span></a>
-                </li>
+                <?php echo buildAndPrintTree(\App\Model\Role\SysMenu::all()->toArray()); ?>
             </ul>
             <div class="clearfix"></div>
         </div>
@@ -38,3 +36,31 @@
     </div>
 </div>
 <!-- Left Sidebar End -->
+<?php
+function buildAndPrintTree($tree,$parent=null){
+    //todo:: need to remove extra ul and + sign
+    if(count($tree)>0){
+        foreach ($tree as $key=>$node){
+            if($node['parent_id']==$parent&&$node['status']==1){
+                $url = $node['url'];
+                $plus_sign = '';
+                $is_active = $node['url']==request()->route()->uri?'active':'';
+                if(empty($url)){
+                    $url = 'javascript:void(0);';
+                    $plus_sign='<span class="pull-right"><i class="md md-add"></i></span>';
+                }
+                elseif(filter_var($url, FILTER_VALIDATE_URL)==false)
+                    $url = url($url);
+                unset($tree[$key]);
+                echo "<li class='$is_active'>";
+                echo '<a title="'.$node['alt_title'].'" href="'.$url.'" class="waves-effect "><i class="'.$node['icon'].'"></i><span>'.$node['title'].'</span><span class="pull-right">'.$plus_sign.'</span></a>';
+                echo '<ul>';
+                buildAndPrintTree($tree,$node['id']);
+                echo '</ul>';
+                echo '</li>';
+            }
+        }
+    }
+}
+?>
+
