@@ -34,7 +34,8 @@
                 $group_roles = $group_roles->toArray();
                 $group_roles = array_column($group_roles,'uri');
                 $menus = \App\Model\Role\SysMenu::all()->toArray();
-                echo buildAndPrintTree($menus,$group_roles);
+                $tree = buildTree($menus,$group_roles);
+                print_tree_menu($tree);
                 ?>
             </ul>
             <div class="clearfix"></div>
@@ -44,6 +45,42 @@
 </div>
 <!-- Left Sidebar End -->
 <?php
+function print_tree_menu($menus,$self=false){
+    foreach ($menus as $menu)
+    {
+        if(!isset($menu['sub_menu']))
+        {
+            $is_active = $menu['url']==request()->route()->uri?'active':'';
+            ?>
+            <li class="{{$is_active}}" >
+                <a href="{{url($menu['url'])}}" class="waves-effect"><i class="{{$menu['icon']}}"></i><span>{{$menu['title']}} </span></a>
+            </li>
+            <?php
+        }
+        else
+        {
+        ?>
+        <li class="has_sub">
+            <a href="javascript:;" class="waves-effect" title="{{$menu['alt_title']}}"><i class="{{$menu['icon']}}"></i>{{$menu['title']}}<span class="arrow"></span></a>
+            <ul>
+                <?php
+                print_tree_menu($menu['sub_menu'],true)
+                ?>
+            </ul>
+        </li>
+        <?php
+        }
+        ?>
+
+        <?php
+    }
+    if($self)
+    {
+        return 0;
+    }
+}
+
+
 function buildAndPrintTree($tree,$group_roles,$parent=null){
     if(count($tree)>0){
         foreach ($tree as $key=>$node){

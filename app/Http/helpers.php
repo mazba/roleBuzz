@@ -31,9 +31,11 @@ if (! function_exists('getRoles')) {
         }
         return Cache::get(config('sys.role_cache'));
     }
-}if (! function_exists('getRolesByGroupId')) {
+}
+if (! function_exists('getRolesByGroupId')) {
     function getRolesByGroupId($group_id){
         $cache_key = config('sys.role_cache').'_'.$group_id;
+//        Cache::forget($cache_key);
         if(!Cache::has($cache_key)){
             Cache::rememberForever($cache_key, function() use($group_id) {
                 return SysGroupPermissions::where('sys_group_id',$group_id)->get();
@@ -42,3 +44,28 @@ if (! function_exists('getRoles')) {
         return Cache::get($cache_key);
     }
 }
+function buildTree($rows,$roles,$parent_id = 0)
+{
+    $arrange_menus = [];
+    $i = 0;
+    foreach ($rows as $row)
+    {
+        $i++;
+        if($row['parent_id'] == $parent_id)
+        {
+            $children = buildTree($rows,$roles,$row['id']);
+            if ($children)
+            {
+                $row['sub_menu'] = $children;
+                $arrange_menus[] = $row;
+            }
+            else
+            {
+                if(in_array($row['uri'],$roles))
+                    $arrange_menus[] = $row;
+            }
+        }
+    }
+    return $arrange_menus;
+}
+

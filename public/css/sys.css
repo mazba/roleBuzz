@@ -27,3 +27,6 @@
     content: ' *';
     color: red;
 }
+#sidebar-menu > ul > li > a > i{
+    margin-right: 4px!important;
+}
