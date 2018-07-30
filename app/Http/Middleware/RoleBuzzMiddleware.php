@@ -20,17 +20,11 @@ class RoleBuzzMiddleware
     public function handle($request, Closure $next)
     {
         $route = $request->route();
-        if(!Cache::get(config('sys.role_cache'))){
-            Cache::rememberForever(config('sys.role_cache'), function() {
-                return SysGroupPermissions::all()->toArray();
-            });
-        }
-        $roles=Cache::get(config('sys.role_cache'));
-        $roles=collect($roles);
-        $route = $request->route();
-        $hasRole=$roles->search(function($item,$key) use($route){
-            return (isset($route->action['as'])&&$route->action['as']==$item['as']&&Auth::user()->sys_group_id==$item['sys_group_id']) ||
-                ($route->uri == $item['uri']&&implode(',',$route->methods)==$item['http_verbs']&&Auth::user()->sys_group_id==$item['sys_group_id']);
+        $user_group_id = Auth::user()->sys_group_id;
+        $roles = collect(getRoles());
+        $hasRole = $roles->search(function($item,$key) use($route,$user_group_id){
+            return (isset($route->action['as'])&&$route->action['as']==$item['as']&&$user_group_id==$item['sys_group_id']) ||
+                ($route->uri == $item['uri']&&implode(',',$route->methods)==$item['http_verbs']&&$user_group_id==$item['sys_group_id']);
         });
         return $hasRole!==false ?$next($request):response('Unauthorized','401');
     }

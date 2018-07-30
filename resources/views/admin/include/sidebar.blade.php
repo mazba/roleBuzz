@@ -28,7 +28,14 @@
         <!--- Divider -->
         <div id="sidebar-menu">
             <ul>
-                <?php echo buildAndPrintTree(\App\Model\Role\SysMenu::all()->toArray()); ?>
+                <?php
+                $user_group_id = Auth::user()->sys_group_id;
+                $group_roles = getRolesByGroupId($user_group_id);
+                $group_roles = $group_roles->toArray();
+                $group_roles = array_column($group_roles,'uri');
+                $menus = \App\Model\Role\SysMenu::all()->toArray();
+                echo buildAndPrintTree($menus,$group_roles);
+                ?>
             </ul>
             <div class="clearfix"></div>
         </div>
@@ -37,8 +44,7 @@
 </div>
 <!-- Left Sidebar End -->
 <?php
-function buildAndPrintTree($tree,$parent=null){
-    //todo:: need to remove extra ul and + sign
+function buildAndPrintTree($tree,$group_roles,$parent=null){
     if(count($tree)>0){
         foreach ($tree as $key=>$node){
             if($node['parent_id']==$parent&&$node['status']==1){
@@ -55,7 +61,7 @@ function buildAndPrintTree($tree,$parent=null){
                 echo "<li class='$is_active'>";
                 echo '<a title="'.$node['alt_title'].'" href="'.$url.'" class="waves-effect "><i class="'.$node['icon'].'"></i><span>'.$node['title'].'</span><span class="pull-right">'.$plus_sign.'</span></a>';
                 echo '<ul>';
-                buildAndPrintTree($tree,$node['id']);
+                buildAndPrintTree($tree,$group_roles,$node['id']);
                 echo '</ul>';
                 echo '</li>';
             }

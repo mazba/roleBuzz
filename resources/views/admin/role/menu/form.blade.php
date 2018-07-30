@@ -18,8 +18,12 @@
                 @endif
         </div>
         <div class="form-group">
-            {{ Form::label('url', __('Url'),['class'=>'control-label']) }}
-            {{ Form::text('url',null,['placeholder'=>__('Url'),'class'=>'form-control','style'=>'font-weight:bold;color:#4b8ab1']) }}
+            {{ Form::label('url', __('URI'),['class'=>'control-label']) }}
+            {{ Form::select('uri',$all_routes,null,['placeholder'=>__('None'),'id'=>'uri','class'=>'select2']) }}
+        </div>
+        <div class="form-group">
+            {{ Form::label('url', __('URL'),['class'=>'control-label']) }}
+            {{ Form::text('url',null,['placeholder'=>__('URL'),'id'=>'url','class'=>'form-control']) }}
         </div>
         {{ Form::label('icon', __('Icon')) }}
         <div class="input-group m-t-10">
@@ -889,13 +893,9 @@
         jQuery(".select2").select2({
             width: '100%'
         });
-        $( function() {
-            var availableTags = {!! json_encode($all_routes) !!};
-            availableTags = $.map(availableTags, function(el) { return el });
-            $( "#url" ).autocomplete({
-                source: availableTags
-            });
-        } );
+        $(document).on('change','#uri',function () {
+           $('#url').val($(this).val())
+        });
         $('#icon-list').on('click','p',function () {
             var icon = $(this).find('i').attr('class');
             $('#icon').val(icon);
