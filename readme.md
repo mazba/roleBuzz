@@ -27,5 +27,9 @@ configuration relevant for your application.
 
 
 ## Role Buzz
-    * Role management - route wise
-    * Dynamic infinite menu  tree;
+    * Role management - route wise;
+    * Dynamic infinite menu tree;
+
+
+username: mazba ;
+password: mazba ;

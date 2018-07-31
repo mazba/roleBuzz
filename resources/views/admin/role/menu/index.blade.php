@@ -9,8 +9,9 @@
         </h3>
       </div>
       <div class="panel-body row">
-        <table class="table table-hover table-striped">
-          <thead>
+        <div class="table-responsive">
+          <table class="table table-hover table-striped">
+            <thead>
             <tr>
               <th>#</th>
               <th>{{__('Parent')}}</th>
@@ -22,11 +23,11 @@
               <th>{{__('Status')}}</th>
               <th class="text-right">{{__('Action')}}</th>
             </tr>
-          </thead>
-          <tbody>
-          <?php
-          $number = ($menu->currentPage() * $menu->perPage() ) - ($menu->perPage() - 1 );
-          ?>
+            </thead>
+            <tbody>
+            <?php
+            $number = ($menu->currentPage() * $menu->perPage() ) - ($menu->perPage() - 1 );
+            ?>
             @foreach($menu as $key=>$item)
               <tr>
                 <td>{{ $number++ }}</td>
@@ -42,8 +43,9 @@
                 </td>
               </tr>
             @endforeach
-          </tbody>
-        </table>
+            </tbody>
+          </table>
+        </div>
         <div class="text-center">
           {{ $menu->appends(request()->except('page'))->links() }}
         </div>
