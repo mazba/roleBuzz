@@ -63,7 +63,7 @@
                     </div> <!-- container -->
                 </div> <!-- content -->
                 <footer class="footer text-right">
-
+                    {{date('Y')}} © B-Trac Solutions Ltd.
                 </footer>
             </div>
             <!-- ============================================================== -->

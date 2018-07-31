@@ -61,7 +61,7 @@ function print_tree_menu($menus,$self=false){
         {
         ?>
         <li class="has_sub">
-            <a href="javascript:;" class="waves-effect" title="{{$menu['alt_title']}}"><i class="{{$menu['icon']}}"></i>{{$menu['title']}}<span class="arrow"></span></a>
+            <a href="javascript:;" class="waves-effect" title="{{$menu['alt_title']}}"><i class="{{$menu['icon']}}"></i><span>{{$menu['title']}}</span><span class="arrow"></span></a>
             <ul>
                 <?php
                 print_tree_menu($menu['sub_menu'],true)

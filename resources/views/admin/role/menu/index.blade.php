@@ -9,7 +9,7 @@
         </h3>
       </div>
       <div class="panel-body row">
-        <table class="table table-hover">
+        <table class="table table-hover table-striped">
           <thead>
             <tr>
               <th>#</th>
@@ -38,7 +38,7 @@
                 <td>{!! readMoreString($item['description']) !!}</td>
                 <td>{{$item['status']==1?'Active':'In-Active'}}</td>
                 <td>
-                  <a href="{{route('menu.edit',$item['id'])}}" title="Edit" class="btn btn-icon waves-effect waves-light btn-info m-b-5 pull-right"><i class="md md-edit"></i></a>
+                  <a href="{{route('menu.edit',$item['id'])}}" title="Edit" class="action-btn btn btn-icon waves-effect waves-light btn-default m-b-1 pull-right"><i class="md md-edit"></i></a>
                 </td>
               </tr>
             @endforeach

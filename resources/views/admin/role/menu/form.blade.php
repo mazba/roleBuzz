@@ -29,7 +29,7 @@
         <div class="input-group m-t-10">
             {{ Form::text('icon',!isset($menu)?'md md-apps':null,['class'=>'form-control','readonly']) }}
             <span class="input-group-btn">
-                    <button id="pick-icon" type="button" class="btn waves-effect waves-light btn-warning" data-toggle="modal" data-target=".bs-example-modal-lg"><i class="md md-apps"></i></button>
+                    <button id="pick-icon" type="button" class="btn waves-effect waves-light btn-warning" data-toggle="modal" data-target=".bs-example-modal-lg"><i class="{{isset($menu['icon'])?$menu['icon']:'md md-apps'}}"></i></button>
                 </span>
             @if($errors->has('icon'))
                 <label id="icon-error" class="error" for="icon">{{ $errors->first('icon') }}</label>
