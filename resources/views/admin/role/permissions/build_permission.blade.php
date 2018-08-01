@@ -24,11 +24,11 @@
                     </h3>
                 </div>
                 <div class="panel-body">
-                    <h2 class="text-center">{{$group['name']}}</h2>
+                    <h2 class="text-center">User Group : {{$group['name']}}</h2>
                     <div class="row">
                         {!! Form::open(['action' => ['Admin\Role\PermissionsController@setPermission',$id]]) !!}
                         <div class="col-md-12">
-                            {{ Form::button(__('Set Role'),['type'=>'submit','class'=>'btn btn-block btn-success waves-effect waves-light'])}}
+                            {{ Form::button(__('SAVE ROLE').' <i class="md md-done-all"></i> ',['type'=>'submit','class'=>'btn btn-block btn-danger waves-effect waves-light'])}}
                         </div>
                         <div class="col-md-12">
                             <table id="datatable" class="table table-striped table-bordered">
@@ -106,19 +106,22 @@
                     "orderable": false
                 }]
             });
+            $(document).on('submit','form',function (e) {
+                $('#datatable_filter').find('input').val('');
+                $('#datatable_filter').find('input').trigger('keyup');
+            });
             $('#check-all').click(function(){
-                if($('.route').is(':checked'))
-                    $('.route').prop('checked',false);
-                else
-                    $('.route').prop('checked',true);
-
+                $('.route').prop('checked',this.checked);
             });
         });
     </script>
     <style>
         .permission-builder .panel-body h2{
             border-bottom: 1px solid #f0f0f0;
-            color: #989898;
+            color: #7b7b7b;
+        }
+        #datatable_filter input{
+            margin-top: 19px;
         }
     </style>
 @endsection

@@ -32,4 +32,4 @@ configuration relevant for your application.
 
 
 username: mazba ;
-password: mazba ;
+password: 123456 ;
