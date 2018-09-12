@@ -11,7 +11,7 @@
         <meta name="description" content="A fully featured Role Management">
         <meta name="author" content="Coderthemes">
         {{--<link rel="shortcut icon" href="images/favicon_1.ico">--}}
-        <title>Role Buzz (by Mazba)</title>
+        <title>{{config('mhis.app_short_name')}} ({{config('mhis.app_full_name')}})</title>
         <!-- Base Css Files -->
         <link href="{{ asset('template/css/bootstrap.min.css') }}" rel="stylesheet" />
 

@@ -1,9 +1,9 @@
 <?php
 /******************************************
-*   Created by m@zba on 2/25/18.
-*	Custom Helper Function File
-*
-******************************************/
+ *   Created by m@zba on 2/25/18.
+ *	Custom Helper Function File
+ *
+ ******************************************/
 
 use App\Model\Role\SysGroupPermissions;
 use Illuminate\Support\Facades\Auth;
@@ -61,7 +61,7 @@ function buildTree($rows,$roles,$parent_id = 0)
             }
             else
             {
-                if(in_array($row['uri'],$roles))
+                if($row['status']==1&&in_array($row['uri'],$roles))
                     $arrange_menus[] = $row;
             }
         }

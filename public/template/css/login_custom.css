@@ -1,0 +1,70 @@
+html, body{
+background: url(../images/bg.jpg);
+height:100%;
+margin:0px;
+padding:0px;
+background-size: cover;
+}
+
+.col{
+padding-right: 0px !important;
+padding-left: 0px !important;
+ }
+
+.grandParentContaniner{
+display:table;
+height:100%;
+margin: 0 auto;
+}
+
+.parentContainer{
+display:table-cell;
+vertical-align:middle;  
+}
+
+.login{
+text-align: center;
+margin-left: 0px;
+background-color: #2d323f;
+display: block;
+padding: 6px 12px;
+color: #fff;
+}
+
+.parentContainer #loginForm{
+background:#2e323e;
+border:1px solid #233e45;
+width:100%;
+margin-top: 15px !important;
+}
+
+.forgotUser{color: #606779; margin-left: -15px; font-size: 13px;}
+.register{color: #18be9a;  font-size: 13px; margin-right: -15px;}
+.formfields{background-color: #2d323f; color: #71798d; border: none; border-radius: 2px;font-size: 13px !important;height: 40px;margin-bottom: 10px;}
+.formBody{background-color: #1a1c27; border: 1px solid #195a56;}
+.btnLogin{height: 40px;background-color: #21c2f8; font-size:12px;letter-spacing: 1.2px;}
+.loginTitle{padding: 10px 30px; font-size: 17px; margin-bottom: 30px;}
+.row{
+margin-right: 50px;
+margin-left: 50px;
+}
+.form-horizontal .form-group{
+margin-right: 0px;
+margin-left: 0px;
+}
+
+.title{
+color:#fff; padding-top: 6%; text-align: left; font-size: 27px;
+    text-shadow: 0 0 5px #00bd91;
+}
+
+ @media screen and (max-width: 680px) {
+.title{font-size: 19px;}
+}
+
+.nopadding {
+   padding: 0 !important;
+}
+.form-horizontal{
+    background-color: #1a1c27!important; border: 1px solid #195a56!important;
+}

@@ -35,7 +35,7 @@
             showAnimation: "show",
             showDuration: 0,
             hideDuration: 0,
-            autoHide: false,
+            autoHide: true,
             clickToHide: true
         });
     },

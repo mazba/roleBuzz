@@ -22,7 +22,7 @@
     padding: 1px 4px;
 }
 .panel-body table td,th{
-    text-align: center;
+    /*text-align: center;*/
 }
 .required label:after {
     content: ' *';
@@ -81,4 +81,8 @@
 .select2-container .select2-choice{
     -webkit-border-radius:1px!important;
     border-radius:1px!important;
+}
+#gridTable td .action-btn{
+    padding: 1px 4px;
+    margin: -2px 0;
 }

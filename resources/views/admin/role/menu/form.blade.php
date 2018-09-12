@@ -37,6 +37,10 @@
         </div>
         <br/>
         <div class="form-group">
+            {{ Form::label('order', __('Order'),['class'=>'control-label']) }}
+            {{ Form::text('order',null,['id'=>'order','class'=>'form-control','value'=>999]) }}
+        </div>
+        <div class="form-group">
                 {{ Form::label('description', __('Description')) }}
                 {{ Form::textarea('description',null,['class'=>'form-control','rows'=>2]) }}
                 @if($errors->has('alt_title'))

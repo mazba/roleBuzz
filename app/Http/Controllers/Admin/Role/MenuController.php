@@ -71,7 +71,7 @@ class MenuController extends Controller
     public function edit($id)
     {
         $menu = SysMenu::findOrFail($id);
-        $menus = SysMenu::get()->pluck('title','id');
+        $menus = SysMenu::where('id','!=',$id)->pluck('title','id');
         $routes = \Route::getRoutes();
         $all_routes = [];
         foreach($routes as $key=>$route){

@@ -3,9 +3,9 @@
 @section('content')
     <div class="wrapper-page">
         <div class="panel panel-color panel-primary panel-pages">
-            <div class="panel-heading bg-img">
+            <div class="panel-heading green">
                 <div class="bg-overlay"></div>
-                <h3 class="text-center m-t-10 text-white"> Sign In to <strong>RoleBuzz</strong> </h3>
+                <h3 class="text-center m-t-10 text-white"> Sign In to <strong>MHIS</strong> </h3>
             </div>
             <div class="panel-body">
                 {!! Form::open(['action' => 'Auth\LoginController@login','class'=>'form-horizontal m-t-20']) !!}
@@ -39,10 +39,10 @@
 
                     <div class="form-group m-t-30">
                         <div class="col-sm-7">
-                            <a href=""><i class="fa fa-lock m-r-5"></i> Forgot your password?</a>
+
                         </div>
                         <div class="col-sm-5 text-right">
-                            <a href="{{route('register')}}">Create an account</a>
+
                         </div>
                     </div>
                 {{ Form::close() }}

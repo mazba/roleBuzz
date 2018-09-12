@@ -14,12 +14,13 @@
             <thead>
             <tr>
               <th>#</th>
-              <th>{{__('Parent')}}</th>
               <th>{{__('Title')}}</th>
+              <th>{{__('Parent')}}</th>
               <th>{{__('Alternative Title')}}</th>
               <th>{{__('Url')}}</th>
               <th>{{__('Icon')}}</th>
               <th>{{__('Description')}}</th>
+              <th>{{__('Order')}}</th>
               <th>{{__('Status')}}</th>
               <th class="text-right">{{__('Action')}}</th>
             </tr>
@@ -31,12 +32,13 @@
             @foreach($menu as $key=>$item)
               <tr>
                 <td>{{ $number++ }}</td>
-                <td>{{$item['parent']['title']}}</td>
                 <td>{{$item['title']}}</td>
+                <td>{{$item['parent']['title']}}</td>
                 <td>{{$item['alt_title']}}</td>
                 <td>{{$item['url']}}</td>
                 <td><i class="{{$item['icon']}}"></i></td>
                 <td>{!! readMoreString($item['description']) !!}</td>
+                <td>{{$item['order']}}</td>
                 <td>{{$item['status']==1?'Active':'In-Active'}}</td>
                 <td>
                   <a href="{{route('menu.edit',$item['id'])}}" title="Edit" class="action-btn btn btn-icon waves-effect waves-light btn-default m-b-1 pull-right"><i class="md md-edit"></i></a>
