@@ -9,7 +9,7 @@
     <!-- LOGO -->
     <div class="topbar-left">
         <div class="m-l-10">
-            <a href="{{ route('admin_dashboard') }}" class="logo"><i class="md md-local-hospital"></i> <span>{{config('mhis.app_short_name')}}</span></a>
+            <a href="{{ route('admin_dashboard') }}" class="logo"><i class="md md md-beenhere"></i> <span>{{config('sys.app_short_name')}}</span></a>
         </div>
     </div>
     <!-- Button mobile view to collapse sidebar menu -->
@@ -22,12 +22,6 @@
                     </button>
                     <span class="clearfix"></span>
                 </div>
-                <form class="navbar-form pull-left" role="search">
-                    <div class="form-group">
-                        <input type="text" class="form-control search-bar" placeholder="Type here for search...">
-                    </div>
-                    <button type="submit" class="btn btn-search"><i class="fa fa-search"></i></button>
-                </form>
 
                 <ul class="nav navbar-nav navbar-right pull-right">
                     <li class="dropdown hidden-xs">
@@ -94,11 +88,15 @@
                         <a href="#" class="right-bar-toggle waves-effect waves-light"><i class="md md-chat"></i></a>
                     </li>
                     <li class="dropdown">
-                        <a href="" class="dropdown-toggle profile" data-toggle="dropdown" aria-expanded="true"><img src="{{asset('img/demo.png')}}" alt="user-img" class="img-circle"> </a>
+                        <a href="" class="dropdown-toggle profile" data-toggle="dropdown" aria-expanded="true">
+                            <?php
+                            $user_image = \Illuminate\Support\Facades\Auth::user()->image;
+                            if(empty($user_image)||!file_exists(public_path($user_image)))
+                                $user_image = 'img/default-avatar.jpeg'
+                            ?>
+                            <img src="{{asset($user_image)}}" alt="Image" class="img-circle">
+                        </a>
                         <ul class="dropdown-menu">
-                            <li><a href="javascript:void(0)"><i class="md md-face-unlock"></i> Profile</a></li>
-                            <li><a href="javascript:void(0)"><i class="md md-settings"></i> Settings</a></li>
-                            <li><a href="javascript:void(0)"><i class="md md-lock"></i> Lock screen</a></li>
                             <li><a href="{{route('logout')}}"><i class="md md-settings-power"></i> Logout</a></li>
                         </ul>
                     </li>

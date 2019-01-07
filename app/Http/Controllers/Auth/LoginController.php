@@ -47,7 +47,8 @@ class LoginController extends Controller
             'password' => 'required|min:6'
         ]);
         // Attempt to log the user in
-        if (Auth::guard('web')->attempt(['username' => $request->username, 'password' => $request->password], $request->remember)) {
+        $remember = $request->remember==1?true:false;
+        if (Auth::guard('web')->attempt(['username' => $request->username, 'password' => $request->password], $remember)) {
             // if successful, then redirect to their intended location
             return redirect()->intended(route('admin_dashboard'));
         }

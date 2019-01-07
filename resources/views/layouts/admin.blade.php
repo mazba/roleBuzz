@@ -8,10 +8,10 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="A fully featured Role Management">
+    <meta name="description" content="{{config('sys.app_full_name')}}">
     <meta name="author" content="Coderthemes">
     {{--<link rel="shortcut icon" href="images/favicon_1.ico">--}}
-    <title>{{config('workshop.app_name')}}</title>
+    <title>{{config('sys.app_full_name')}}</title>
     <!-- Base Css Files -->
     <link href="{{ asset('template/css/bootstrap.min.css') }}" rel="stylesheet" />
 

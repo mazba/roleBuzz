@@ -61,7 +61,7 @@ Date: Jun 2015
 /******** 1. General ********/
 
 body {
-  background: #f5f5f5;
+  background: #e5eeef;
   margin: 0;
   -webkit-text-size-adjust: 100%;
   font-family: 'Nunito', sans-serif;
@@ -271,7 +271,7 @@ a:focus {
   color: #ffffff;
 }
 .panel-primary>.panel-heading {
-  background-color: #1e88e5;
+  background-color: #1ec9e5;
 }
 .panel-success>.panel-heading {
   background-color: #33b86c;
@@ -1314,7 +1314,7 @@ input.search-bar:-ms-input-placeholder {
 .logo i {
   font-size: 30px;
   margin-right: 5px;
-  color: #ee6e73;
+  color: #fff;
 }
 .navbar-nav {
   margin: 0px;

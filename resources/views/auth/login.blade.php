@@ -5,7 +5,7 @@
         <div class="panel panel-color panel-primary panel-pages">
             <div class="panel-heading green">
                 <div class="bg-overlay"></div>
-                <h3 class="text-center m-t-10 text-white"> Sign In to <strong>MHIS</strong> </h3>
+                <h3 class="text-center m-t-10 text-white"> Sign In to <strong>{{config('sys.app_short_name')}}</strong> </h3>
             </div>
             <div class="panel-body">
                 {!! Form::open(['action' => 'Auth\LoginController@login','class'=>'form-horizontal m-t-20']) !!}
@@ -22,7 +22,7 @@
                     <div class="form-group ">
                         <div class="col-xs-12">
                             <div class="checkbox checkbox-primary">
-                                <input id="checkbox-signup" type="checkbox">
+                                <input id="checkbox-signup" type="checkbox" name="remember" value="1">
                                 <label for="checkbox-signup">
                                     Remember me
                                 </label>
