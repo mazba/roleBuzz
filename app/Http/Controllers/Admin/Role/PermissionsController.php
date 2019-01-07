@@ -94,6 +94,9 @@ class PermissionsController extends Controller
         }
         SysGroupPermissions::insert($inputs);
         Cache::forget(config('sys.role_cache'));
+        $usr_groups = SysUserGroup::pluck('name','id');
+        foreach ($usr_groups as $group_id=>$value)
+            Cache::forget(config('sys.role_cache').'_'.$group_id);
         $request->session()->flash('status', __('Permission has been saved Successfully'));
         return redirect()->route('permissions');
     }
