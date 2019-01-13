@@ -50,8 +50,8 @@
 
 <!-- Begin page -->
 <div id="wrapper">
-@include('admin.moltran.include.header')
-@include('admin.moltran.include.sidebar')
+@include('admin.include.header')
+@include('admin.include.sidebar')
 <!-- ============================================================== -->
     <!-- Start right Content here -->
     <!-- ============================================================== -->
@@ -216,7 +216,7 @@
 <script src="{{ asset('template/moltran/assets/modal-effect/js/modalEffects.js') }}"></script>
 <link href="{{ asset('template/moltran/assets/modal-effect/css/component.css') }}" rel="stylesheet">
 <script src="{{ asset('js/sys.js') }}"></script>
-@include('admin.moltran.include.jq')
+@include('admin.include.jq')
 @yield('scripts')
 <script type="text/javascript">
     jQuery(document).ready(function($) {

@@ -1,4 +1,4 @@
-@extends('layouts.metronic.admin')
+@extends('layouts.admin')
 @section('content')
 <?php
 //    var_dump(Session::has('errors'));

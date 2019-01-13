@@ -1,4 +1,4 @@
-@extends('layouts.moltran.admin')
+@extends('layouts.admin')
 @section('content')
 <div class="row">
     <div class="col-md-12">
@@ -11,7 +11,7 @@
             </div>
             <div class="panel-body row">
                 {!! Form::open(['action' => 'Admin\Role\PermissionsController@store']) !!}
-                @include('admin.moltran.role.permissions.form',['submit'=>__('Save')])
+                @include('admin.role.permissions.form',['submit'=>__('Save')])
                 {{ Form::close() }}
             </div><!-- panel-body -->
         </div> <!-- panel -->

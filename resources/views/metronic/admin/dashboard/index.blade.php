@@ -4,7 +4,7 @@
  * Date: 2/20/18
  * Time: 10:41 AM
  */ ?>
-@extends('layouts.metronic.admin')
+@extends('layouts.admin')
 @section('content')
     <!-- Start Widget -->
     <div class="row margin-top-10">

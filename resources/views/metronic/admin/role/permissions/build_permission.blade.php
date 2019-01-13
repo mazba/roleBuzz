@@ -4,7 +4,7 @@
  * Date: 2/25/18
  * Time: 2:21 PM
  */?>
-@extends('layouts.metronic.admin')
+@extends('layouts.admin')
 @section('content')
     <?php
     //    var_dump(Session::has('errors'));

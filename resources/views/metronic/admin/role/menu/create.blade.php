@@ -1,4 +1,4 @@
-@extends('layouts.metronic.admin')
+@extends('layouts.admin')
 @section('content')
 <div class="row">
     <div class="col-md-12">
@@ -11,7 +11,7 @@
             </div>
             <div class="panel-body row">
                 {!! Form::open(['action' => 'Admin\Role\MenuController@store']) !!}
-                @include('admin.metronic.role.menu.form',['submit'=>__('Save'),'all_routes'=>$all_routes])
+                @include('admin.role.menu.form',['submit'=>__('Save'),'all_routes'=>$all_routes])
                 {{ Form::close() }}
             </div><!-- panel-body -->
         </div> <!-- panel -->

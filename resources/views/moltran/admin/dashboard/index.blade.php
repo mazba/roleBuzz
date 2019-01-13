@@ -4,7 +4,7 @@
  * Date: 2/20/18
  * Time: 10:41 AM
  */ ?>
-@extends('layouts.moltran.admin')
+@extends('layouts.admin')
 @section('content')
     <!-- Page-Title -->
     <div class="row">

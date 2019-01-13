@@ -1,4 +1,4 @@
-@extends('layouts.metronic.admin')
+@extends('layouts.admin')
 @section('content')
 <div class="row">
     <div class="col-md-12">
@@ -13,7 +13,7 @@
                 {!! Form::model($menu,['url' => route('menu.update',$menu['id'])]) !!}
                 {{ csrf_field() }}
                 {{method_field('PUT')}}
-                @include('admin.metronic.role.menu.form',['submit'=>__('Save'),'all_routes'=>$all_routes])
+                @include('admin.role.menu.form',['submit'=>__('Save'),'all_routes'=>$all_routes])
                 {{ Form::close() }}
             </div><!-- panel-body -->
         </div> <!-- panel -->

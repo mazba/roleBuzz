@@ -60,7 +60,7 @@ Git Url: https://github.com/mazba/roleBuzz
 <!-- DOC: Apply "page-full-width" class to the body element to have full width page without the sidebar menu -->
 <body class="page-header-fixed page-sidebar-closed-hide-logo ppage-sidebar-closed-hide-logo">
 <!-- BEGIN HEADER -->
-@include('admin.metronic.include.header')
+@include('admin.include.header')
 <!-- END HEADER -->
 <div class="clearfix"></div>
 <!-- BEGIN CONTAINER -->
@@ -77,7 +77,7 @@ Git Url: https://github.com/mazba/roleBuzz
             <!-- DOC: Set data-auto-scroll="false" to disable the sidebar from auto scrolling/focusing -->
             <!-- DOC: Set data-keep-expand="true" to keep the submenues expanded -->
             <!-- DOC: Set data-auto-speed="200" to adjust the sub menu slide up/down speed -->
-            @include('admin.metronic.include.sidebar')
+            @include('admin.include.sidebar')
             <!-- END SIDEBAR MENU -->
         </div>
     </div>
@@ -135,7 +135,7 @@ Git Url: https://github.com/mazba/roleBuzz
 <script src="{{url('template/metronic')}}/assets/admin/layout4/scripts/layout.js" type="text/javascript"></script>
 <script src="{{url('template/metronic')}}/assets/admin/layout4/scripts/demo.js" type="text/javascript"></script>
 <script src="{{url('template/metronic')}}/assets/admin/pages/scripts/index3.js" type="text/javascript"></script>
-@include('admin.metronic.include.jq')
+@include('admin.include.jq')
 @yield('scripts')
 <!-- END PAGE LEVEL SCRIPTS -->
 <script>

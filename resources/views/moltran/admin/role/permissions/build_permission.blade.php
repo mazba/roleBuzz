@@ -4,7 +4,7 @@
  * Date: 2/25/18
  * Time: 2:21 PM
  */?>
-@extends('layouts.moltran.admin')
+@extends('layouts.admin')
 @section('content')
     <?php
     //    var_dump(Session::has('errors'));

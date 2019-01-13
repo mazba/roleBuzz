@@ -17,7 +17,7 @@ class PermissionsController extends Controller
      */
     public function index()
     {
-        return view('admin.'.config('sys.app_template').'.role.permissions.index',['users'=>SysUserGroup::all()]);
+        return view('admin.role.permissions.index',['users'=>SysUserGroup::all()]);
     }
 
     /**
@@ -27,7 +27,7 @@ class PermissionsController extends Controller
      */
     public function create()
     {
-        return view('admin.'.config('sys.app_template').'.role.permissions.create',['users'=>SysUserGroup::pluck('name','id')]);
+        return view('admin.role.permissions.create',['users'=>SysUserGroup::pluck('name','id')]);
     }
 
     /**
@@ -67,7 +67,7 @@ class PermissionsController extends Controller
         }
         $user_group_permissions = new SysGroupPermissions();
         $user_group_permissions=$user_group_permissions->where(['sys_group_id'=>$id])->get()->toArray();
-        return view('admin.'.config('sys.app_template').'.role.permissions.build_permission',compact('user_group_permissions','id','routes','group'));
+        return view('admin.role.permissions.build_permission',compact('user_group_permissions','id','routes','group'));
     }
     /**
      * Set the form for permission the specified resource.
