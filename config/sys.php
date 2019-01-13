@@ -10,4 +10,5 @@ return [
     'role_cache'=>'prole',
     'app_short_name' =>'RoleBuzz',
     'app_full_name' => 'A Route Based Role Management By Mazba',
+    'app_template' => 'metronic',
 ];

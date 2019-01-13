@@ -41,6 +41,8 @@ class LoginController extends Controller
 
     public function login(Request $request)
     {
+        if($request->method()=='GET')
+            return view('admin.'.config('sys.app_template').'.login');
         // Validate the form data
         $this->validate($request, [
             'username'   => 'required',

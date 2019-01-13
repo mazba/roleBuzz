@@ -16,7 +16,7 @@ $(function () {
         }
     });
     //active menu
-    /*var allLink = $('#sidebar-menu li a');
+    var allLink = $('.page-sidebar-menu li a');
     var path_name = window.location.pathname;
     path_name = path_name.toLowerCase();
     var foundLink = false;
@@ -25,6 +25,7 @@ $(function () {
     }
     allLink.each(function(){
         var thisUrl = $(this).attr('href').toLowerCase();
+        var thisUrl = $(this).data('url');
         if(path_name == thisUrl){
             checkParentSubMenu(this);
             foundLink = true;
@@ -42,7 +43,7 @@ $(function () {
             }
         });
 
-    }*/
+    }
 });
 /*
 * Read More for long text

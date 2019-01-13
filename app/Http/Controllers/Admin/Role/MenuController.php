@@ -17,7 +17,7 @@ class MenuController extends Controller
     {
         $menu = new SysMenu();
         $menu = $menu->with('parent')->paginate(config('common.pagination.per_page'));
-        return view('admin.role.menu.index',compact('menu'));
+        return view('admin.'.config('sys.app_template').'.role.menu.index',compact('menu'));
     }
 
     /**
@@ -37,7 +37,7 @@ class MenuController extends Controller
             )
             $all_routes[$route->uri]=$route->uri;
         }
-        return view('admin.role.menu.create',compact('menus','all_routes'));
+        return view('admin.'.config('sys.app_template').'.role.menu.create',compact('menus','all_routes'));
     }
 
     /**
@@ -81,7 +81,7 @@ class MenuController extends Controller
             )
                 $all_routes[$route->uri]=$route->uri;
         }
-        return view('admin.role.menu.edit',compact('menu','menus','all_routes'));
+        return view('admin.'.config('sys.app_template').'.role.menu.edit',compact('menu','menus','all_routes'));
     }
 
     /**
